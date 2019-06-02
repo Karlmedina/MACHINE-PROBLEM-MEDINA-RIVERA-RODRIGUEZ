@@ -1,0 +1,108 @@
+// Machine Problem Number 2 - Medina - Rivera - Rodriguez 
+// This program will generate all interior angles, classify whether the triangle is (scalene, isosceles or equilateral, determine the area and perimeter, classify whether the the triangle is (acute, right or obtuse) and compute for the length of the apothem and circumference
+
+#include <iostream>//Pre-processor directive
+#include <cmath>//Declares set of functions to perform and compute mathematical operations and transformations
+using namespace std;//Allows the use of cout and endl without the use of the prefix std::
+int main()
+{
+	const double pi = 3.141592653589793;//Decalarion for the constant value of Pi
+	double SA, SB, SC, AA, AB, AC, TotalAngle, Peri, Periperi, Area, Apo, Cir;//SA/SB/SC = Sides or SideA/SideB/SideC, AA/AB/AC = Angles or AngleA/AngleB/AngleC, TotalAngle = Total of all Angles, Peri = Perimeter, Periperi = 1/2 of the perimeter, Area = Area of the Triangle, Apo = Length of the Apothem, Cir = Circumcenter
+   	char tryagain;//To input a variable 
+   	AGAIN:// Try again
+   	
+ 	cout <<"Please Enter the Largest Side of the Triangle (Side A): "<<endl; 
+	cin >> SA;	// Input Side A
+	cout <<"Please Enter the Smallest Side of the Triangle (Side B): "<<endl;	
+	cin >> SB;	// Input Side B
+	cout <<"Please Enter the Medium Side of the Triangle (Side C): "<<endl;	
+	cin >> SC;	// Input Side C
+	
+    cout <<endl;
+	
+	AA = ((acos((pow(SB, 2) + pow(SC, 2) - pow(SA, 2)) / (2 * SB * SC))) * (180)) / pi;	// Formula to calculate the point of angle A through the given sides
+	cout<<"Angle A = " <<AA <<endl; // Shows the calculated point of Angle A
+	AB = ((acos((pow(SC, 2) + pow(SA, 2) - pow(SB, 2)) / (2 * SC * SA))) * (180)) / pi;	// Formula to calculate the point of angle B through the given sides
+	cout<<"Angle B = " << AB <<endl; // Shows the calculated degree point of Angle B
+	AC = ((acos((pow(SA, 2) + pow(SB, 2) - pow(SC, 2)) / (2 * SA * SB))) * (180)) / pi;	// Formula to calculate the point of angle A through the given sides
+	cout<<"Angle C = " << AC <<endl; // Shows the calculated degree point of Angle C
+	
+	
+	TotalAngle = AA + AB + AC; // Formula to get the total angle for the interior angle
+	cout<<endl;
+	cout<<"The Interior Angle of the Tringle is = " << TotalAngle <<endl; // Shows the calculated Interior Angle
+	
+	cout<<endl;
+	cout<<"Classification of the Triangle (Equilateral Triangle | Isosceles Triangle | Scalene Triangle)"<<endl;
+	cout<<"The triangle based on its sides is: ";
+ 
+ 	if(SA == SB && SB == SC) // Condition for the Equilateral Triangle which means all sides are equal
+{
+   	cout <<"Equilateral Triangle"<<endl;// If the condition has been met, Equilateral Triangle will be shown	
+}
+	else if(SA == SB || SA == SC || SC == SB)//Condition for Isosceles Triangle which means two sides are equal
+{
+   	cout <<"Isosceles Triangle"<<endl;// If the condition has been met, Isosceles Triangle will be shown
+}
+   	else  //Condition for Scalene Triangle which means the sides are not equal to each other
+{
+   	cout <<"Scalene Triangle"<<endl; // If the condition has been met, Scalene Triangle will be shown
+}
+	
+   	cout<<endl;
+   	Peri = SA + SB + SC;	// The sum of all sides is the formula for perimeter
+	cout<<"The Perimeter is = " << Peri <<endl; // Shows the calculated Perimeter
+	
+	cout<<endl; 
+	
+	Periperi = Peri / 2;	// Formula of half of the perimeter - It will be use to get the Area
+	Area = sqrt((Periperi - SA) * (Periperi - SB) * (Periperi - SC)*Periperi);	// Formula to get the Area
+	cout<<"The Area is = " << Area <<endl; // Shows the calculated Area
+	cout<<endl; 
+	
+	cout<<"Classification of the Triangle (Acute Triangle | Right Triangle | Obtuse Triangle)"<<endl;
+	cout<<"The triangle based on its angles is: ";
+		 
+     
+    if (AA == 90 || AB == 90 || AC == 90) //Condition for the Right Triangle which means all angles are equal to 90 degrees
+{
+	cout<<"Right Triangle"<<endl;//If the condition has been met, Right Triangle will be shown
+} 
+	else if (AA < 90 && AB < 90 && AC < 90)//Condition for the Acute Triangle which means all angles are less than 90 degrees
+{
+	cout<<"Acute Triangle"<<endl;//If the condition has been met, Acute Triangle will be shown
+}
+    else //Condition for the Obtuse Triangle which means all angles are greater than 90 degrees
+{	
+	cout<<"Obtuse Triangle"<<endl;//If the condition has been met, Obtuse Triangle will be shown
+}
+    
+	Apo = (2 * Area) / Peri;//Formula to get the length of the apothem of the triangle
+	cout<<"The Length of the Apothem is = "<<Apo<<endl;//Shows the calculated length of the apothem
+	cout<<endl; 
+	Cir = (SA * SB * SC) / sqrt((SA + SB + SC) * (SB + SC - SA) * (SC + SA - SB) * (SA + SB - SC));//Formula to get the circumcenter
+	cout<<"The Circumcenter is = "<<Cir<<endl;//Shows the calculated circumcenter
+	cout<<endl;
+
+
+	cout<<"---------------------------------"<<endl;
+	
+    cout << endl;
+    cout << "Try Again?" <<endl;
+    cout << "(y / Y to continue, any key to exit)" <<endl;
+    cout << "Your Choice: ";
+    cin  >> tryagain;//input choice whether to try again or not 
+
+    if (tryagain == 'y' || tryagain == 'Y')//condition to repeat the whole process
+        {
+            cout << endl;
+            goto AGAIN;//condition to repeat from the start
+            cout << endl;
+        }
+    else //If does not met the condition, the program will automatically exit
+        {
+            exit(0);
+        }
+    
+    return 0;
+}
