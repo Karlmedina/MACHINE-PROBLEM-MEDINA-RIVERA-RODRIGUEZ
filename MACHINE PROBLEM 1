@@ -1,0 +1,160 @@
+//Machine Proble 1 Medina-Rivera-Rodriguez
+//This program will generate a classroom management softwarein a form of an electronic class record whereas the program will show the grades of the students for every component (Experiments, Skills Test, Machine Problems, Preliminary Exam and Final Exam. Lastly it will display the top 10 performing students.
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main()
+{
+	
+	int students=50;
+	string name[students];
+	double e1[students], e2[students], e3[students], e4[students],e5[students],e6[students],e7[students],e8[students],e9[students];
+	double s1[students], s2[students], s3[students], s4[students], s5[students], s6[students], s7[students], s8[students], s9[students];
+	double mp1[students],mp2[students];
+	double pre[students]; 
+	double fin[students];
+	double GeneralAverage[students];
+	double TransmutedGrade[students];
+	
+	for(int i=0; i<students; i++)
+	{
+	cout<<"Please Enter the Name of the Student: " <<endl; 
+	cin>>name[i];
+	cout<<"Enter the Grade of the Student for Every Experiment (Each Experiment is Over 100 Points Only)"<<endl;
+	cout<<"1) ";cin>>e1[i];
+	cout<<"2) ";cin>>e2[i];
+	cout<<"3) ";cin>>e3[i];
+	cout<<"4) ";cin>>e4[i];
+	cout<<"5) ";cin>>e5[i];
+	cout<<"6) ";cin>>e6[i];
+	cout<<"7) ";cin>>e7[i];
+	cout<<"8) ";cin>>e8[i];
+	cout<<"9) ";cin>>e9[i];
+	cout<<"Enter the Grade of the Student for Every Skills Test (Each Skills Test is Over 100 Points Only) "<<endl;
+	cout<<"1) ";cin>>s1[i];
+	cout<<"2) ";cin>>s2[i];
+	cout<<"3) ";cin>>s3[i];
+	cout<<"4) ";cin>>s4[i];
+	cout<<"5) ";cin>>s5[i];
+	cout<<"6) ";cin>>s6[i];
+	cout<<"7) ";cin>>s7[i];
+	cout<<"8) ";cin>>s8[i];
+	cout<<"9) ";cin>>s9[i];
+	cout<<"Enter the Students Grade for Every Machine Problem (Each Machine Problem is Over 100 Points Only)"<<endl;
+	cout<<"1) ";cin>>mp1[i];
+	cout<<"2) ";cin>>mp2[i];
+	cout<<"Preliminary Exam Score (Each Experiment is Over 100 Points Only)"<<endl;	
+	cout<<"1) ";cin>>pre[i];
+	cout<<"Final Exam Score (Each experiment is over 100 points only)"<<endl;	
+	cout<<"1) ";cin>>fin[i];
+	
+	GeneralAverage[i] += e1[i]/90*.10;
+	GeneralAverage[i] += e2[i]/90*.10;
+	GeneralAverage[i] += e3[i]/90*.10;
+	GeneralAverage[i] += e4[i]/90*.10;
+	GeneralAverage[i] += e5[i]/90*.10;
+	GeneralAverage[i] += e6[i]/90*.10;
+	GeneralAverage[i] += e7[i]/90*.10;
+	GeneralAverage[i] += e8[i]/90*.10;
+	GeneralAverage[i] += e9[i]/90*.10;	
+	GeneralAverage[i] += s1[i]/90*0.20;
+	GeneralAverage[i] += s2[i]/90*0.20;
+	GeneralAverage[i] += s3[i]/90*0.20;
+	GeneralAverage[i] += s4[i]/90*0.20;
+	GeneralAverage[i] += s5[i]/90*0.20;
+	GeneralAverage[i] += s6[i]/90*0.20;
+	GeneralAverage[i] += s7[i]/90*0.20;
+	GeneralAverage[i] += s8[i]/90*0.20;
+	GeneralAverage[i] += s9[i]/90*0.20;
+	GeneralAverage[i] += mp1[i]/20*.20;
+	GeneralAverage[i] += mp2[i]/20*.20;
+	GeneralAverage[i] += pre[i]/10*.20;
+	GeneralAverage[i] += fin[i]/10*.30;
+	GeneralAverage[i] += GeneralAverage[i]*9;
+	}
+
+	for(int i=0; i<students; i++)
+	{
+		
+	if(GeneralAverage[i] >= 95.57 )
+	{
+	TransmutedGrade[i] = 1.00;
+	}
+	else if(GeneralAverage[i] >= 91.12 && GeneralAverage[i] <= 96.56 )
+	{
+	TransmutedGrade[i] = 1.25;
+	}
+	else if(GeneralAverage[i] >= 86.68 && GeneralAverage[i] <= 91.11 )
+	{
+	TransmutedGrade[i] = 1.50;
+	}
+	else if(GeneralAverage[i] >= 82.23 && GeneralAverage[i] <= 86.67 )
+	{
+	TransmutedGrade[i] = 1.75;
+	}
+	else if(GeneralAverage[i] >= 77.79 && GeneralAverage[i] <= 82.22 )
+	{
+	TransmutedGrade[i] = 2.00;
+	}
+	else if(GeneralAverage[i] >= 73.34 && GeneralAverage[i] <= 77.78 )
+	{
+	TransmutedGrade[i] = 2.25; 
+	}
+	else if(GeneralAverage[i] >= 68.90 && GeneralAverage[i] <= 73.33 )
+	{
+	TransmutedGrade[i] = 2.50;
+	}
+	else if(GeneralAverage[i] >= 64.45 && GeneralAverage[i] <= 68.89 )
+	{
+	TransmutedGrade[i] = 2.75;
+	}
+	else if(GeneralAverage[i] >= 60.00 && GeneralAverage[i] <= 64.44 )
+	{
+	TransmutedGrade[i] = 3.00;
+	}
+	else
+	{
+	TransmutedGrade[i] = 5.00;
+	}
+
+	}
+	
+	cout<<endl;
+	cout<<"Student Name"<<"\t\t"<<"General Average"<<"\t\t"<<"Transmuted Grade"<<"\t"<<"Pass/Fail"<<endl;
+	for(int i=0; i<students; i++){
+		cout<<fixed<<setprecision(2)<<left;
+		cout<<name[i]<<"\t\t\t"<<GeneralAverage[i]<<"\t\t\t"<<TransmutedGrade[i]<<"\t\t\t";
+		if(TransmutedGrade[i] <= 3){
+			cout<<"Pass"<<endl;
+		}else{
+			cout<<"Fail"<<endl;
+		}
+	}
+	
+	
+	for(int i=0; i<students-1; i++)
+	{	
+		for(int j= i+1; j<students; j++)
+		{	
+			if(GeneralAverage[i] < GeneralAverage[j])
+			{
+				string temp1 = name[i];
+				name[i] = name[j];
+				name[j] = temp1;	
+				double temp2 = GeneralAverage[i];
+				GeneralAverage[i] = GeneralAverage[j];
+				GeneralAverage[j] = temp2;
+			}
+		}
+	}
+	cout<<"THE TOP 10 STUDENTS OF THIS BATCH ARE THE FOLLOWING:" <<endl;
+	for(int i=0; i<10; i++){
+	cout<<"Top "<<i+1<<" :"<<name[i]<<endl;
+	}
+
+
+
+return 0;
+}
